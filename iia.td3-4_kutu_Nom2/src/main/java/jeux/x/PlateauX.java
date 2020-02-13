@@ -19,9 +19,9 @@ public class PlateauX implements PlateauJeu {
 	
 	/* *********** constantes *********** */
 
-	/** Taille de la grille */
+	/** Taille des grilles */
 	public final static int TAILLE = 12;
-
+	public final static int TAILLE_C = 2;
 	
 	/* *********** Paramètres de classe *********** */
 
@@ -32,6 +32,9 @@ public class PlateauX implements PlateauJeu {
 
 	/** le damier */
 	private int damier[];
+	
+	/**les cagnottes */
+	private int cagnotte[];
 
 	/** Le joueur que joue "Blanc" */
 	private static Joueur joueurBlanc;
@@ -50,9 +53,15 @@ public class PlateauX implements PlateauJeu {
 
 	public PlateauX(){
 		damier = new int[TAILLE];
+		cagnotte = new int [TAILLE_C];
+		
 		for(int i=0; i < TAILLE; i++) {
-				damier[i] = VIDE;
+			damier[i] = VIDE;
 		}
+		
+		for(int i=0; i< TAILLE_C; i++) {
+			cagnotte[i]= VIDE;
+		} 
 	}
 
 	public PlateauX(int depuis[]){
@@ -68,15 +77,13 @@ public class PlateauX implements PlateauJeu {
 		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
 		if (j.equals(joueurBlanc)) {
 			for(int i=0 ; i < TAILLE ; i++) { // toutes les lignes
-				for (int j=0 ; j < TAILLE - 1 ; j++) { // regarde sur une colonne
-					if( (damier[i][j]==VIDE) && (damier[i][j+1]==VIDE) ) // on peut jouer
+				if( (damier[i]==VIDE) && (damier[i+1]==VIDE) ) // on peut jouer
 						lesCoupsPossibles.add(new CoupDominos(i,j));
 				}
 			}			
 		} else { // Noir
 			for(int i=0 ; i < TAILLE-1 ; i++) { // toutes les lignes qui passent
-				for (int j=0 ; j < TAILLE ; j++) { // regarde sur toute colonne
-					if( (damier[i][j]==VIDE) && (damier[i+1][j]==VIDE) )  // on peut jouer
+				if( (damier[i+1]==VIDE) && (damier[i+1]==VIDE) )  // on peut jouer
 						lesCoupsPossibles.add(new CoupDominos(i,j));
 				}
 			}
