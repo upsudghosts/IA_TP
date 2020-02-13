@@ -3,7 +3,7 @@ package jeux.x;
 import iia.jeux.modele.CoupJeu;
 import iia.jeux.modele.PlateauJeu;
 import iia.jeux.modele.joueur.Joueur;
-import jeux.dominos.CoupDominos;
+import jeux.x.CoupX;
 
 import java.util.ArrayList;
 
@@ -72,7 +72,6 @@ public class PlateauX implements PlateauJeu {
 
 
     /* A Faire */
-
     public ArrayList<CoupJeu> coupsPossibles(Joueur j) {
 		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
 		if (j.equals(joueurBlanc)) {
@@ -102,13 +101,13 @@ public class PlateauX implements PlateauJeu {
 
     public PlateauJeu copy() {
           throw new UnsupportedOperationException("Il vous faut coder cette méthode");
-  }
+    }
 
     public boolean coupValide(Joueur j, CoupJeu c) {
           throw new UnsupportedOperationException("Il vous faut coder cette méthode");
-  }
+    }
 
-	
+    
 	
 	
 }

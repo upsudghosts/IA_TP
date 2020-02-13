@@ -4,12 +4,12 @@ import iia.jeux.modele.CoupJeu;
 
 public class CoupX implements CoupJeu{
 	/****** Attributs *******/ 
-	private int colonne;
-	private int graines;
+	private int colonne, graines, score;
 	
-	public CoupX(int c, int g) {
+	public CoupX(int c, int g, int s) {
 		this.colonne = c;
 		this.graines = g;
+		this.score = s;
 	}
 	
 	/****** Accesseurs *******/ 
@@ -19,6 +19,10 @@ public class CoupX implements CoupJeu{
 	
 	public int getGraines() {
 		return this.graines;
+	}
+	
+	public int getScore() {
+		return this.score;
 	}
 
 	/****** Accesseurs *******/ 
