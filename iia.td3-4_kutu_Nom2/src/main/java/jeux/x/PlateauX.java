@@ -14,9 +14,38 @@ public class PlateauX implements PlateauJeu {
      *  qui permettent de caractériser les règles du jeu
      *  Une classe CoupX qui
      */
+	
+	/* *********** constantes *********** */
+
+	/** Taille de la grille */
+	public final static int TAILLE = 12;
+
+	
+	/* *********** Paramètres de classe *********** */
+
+	private final static int VIDE = 0;
+
+	
+	/* *********** Attributs  *********** */
+
+	/** le damier */
+	private int damier[];
+
+
+	/************* Constructeurs ****************/ 
 
 	public PlateauX(){
-			/* A Faire */	}
+		damier = new int[TAILLE];
+		for(int i=0; i < TAILLE; i++) {
+				damier[i] = VIDE;
+		}
+	}
+
+	public PlateauX(int depuis[][]){
+		damier = new int[TAILLE];
+		for(int i=0; i < TAILLE; i++)
+				damier[i][j] = depuis[i][j];
+	}
 
 
     /* A Faire */
