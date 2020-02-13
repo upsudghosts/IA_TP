@@ -140,15 +140,17 @@ public class PlateauX implements PlateauJeu {
 			damier[colonne]=0;
 	
     }
-   
 
 
     public boolean finDePartie() {
-         throw new UnsupportedOperationException("Il vous faut coder cette méthode");
+         for(int c : this.cagnotte) {
+        	 if (c == 48) {return true;}
+         }
+         return  false;
    }
 
     public PlateauJeu copy() {
-          throw new UnsupportedOperationException("Il vous faut coder cette méthode");
+    	return this;
     }
 
     public boolean coupValide(Joueur j, CoupJeu c) {
