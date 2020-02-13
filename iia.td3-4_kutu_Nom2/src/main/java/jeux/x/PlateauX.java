@@ -83,10 +83,11 @@ public class PlateauX implements PlateauJeu {
 		}
 		
 		else{
-			for(int i= TAILLE/2; i < TAILLE ; i++) { // toutes les lignes qui passent
-				if( (damier[i+1]==VIDE) && (damier[i+1]==VIDE) )  // on peut jouer
-						lesCoupsPossibles.add(new CoupX(i,damier[i],CalculScoreBlanc(i,j)));
-			}
+			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes	
+				if( (damier[i]!=VIDE) ) { // on peut jouer
+					lesCoupsPossibles.add(new CoupX(i, damier[i], this.CalculScoreBlanc(i,j)));
+				}
+		}	
 		}
 			
 		return lesCoupsPossibles;

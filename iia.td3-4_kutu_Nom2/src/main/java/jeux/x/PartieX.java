@@ -23,8 +23,8 @@ public class PartieX {
 /* faire un vecteur */
 
         AlgoJeu AlgoJoueur[] = new AlgoJeu[2];
-        AlgoJoueur[1] = new NegAlphaBeta(HeuristiquesDominos.hblanc, jBlanc, jNoir); // Il faut remplir la méthode !!!
-        AlgoJoueur[0] = new NegAlphaBeta(HeuristiquesDominos.hnoir, jNoir, jBlanc);  // Il faut remplir la méthode !!!
+        AlgoJoueur[1] = new NegAlphaBeta(HeuristiquesX.hblanc, jBlanc, jNoir); // Il faut remplir la méthode !!!
+        AlgoJoueur[0] = new NegAlphaBeta(HeuristiquesX.hnoir, jNoir, jBlanc);  // Il faut remplir la méthode !!!
 
         System.out.println("TD IIA n.3 - Algorithmes pour les Jeux - Jeu de l'Awalé");
         System.out.println("Etat Initial du plateau de jeu:");
@@ -33,8 +33,8 @@ public class PartieX {
         CoupJeu meilleurCoup = null;
         int jnum;
 
-        PlateauJeu plateauCourant = new PlateauDominos();
-        PlateauDominos.setJoueurs(jBlanc, jNoir);
+        PlateauJeu plateauCourant = new PlateauX();
+        PlateauX.setJoueurs(jBlanc, jNoir);
         // Pour savoir qui joue "noir" et qui joue "blanc"
 
 
