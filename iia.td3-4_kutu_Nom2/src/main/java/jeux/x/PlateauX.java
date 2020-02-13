@@ -94,7 +94,7 @@ public class PlateauX implements PlateauJeu {
     
     public int CalculScoreBlanc(int colonne , Joueur jj) {
     	int score=0; 
-    	PlateauX temp=this.copy(); 
+    	PlateauX temp = ((PlateauX)this.copy()); 
     	temp.joue(jj, new CoupX(colonne, temp.damier[colonne],0));
     	if (colonne>= 0 && colonne<TAILLE/2) {
     		for(int i=0 ; i<= colonne ;i++) {
@@ -114,7 +114,7 @@ public class PlateauX implements PlateauJeu {
 
     public int CalculScoreNoir(int colonne , Joueur jj) {
     	int score=0; 
-    	PlateauX temp=this.copy(); 
+    	PlateauX temp= ((PlateauX)this.copy()); 
     	temp.joue(jj, new CoupX(colonne, temp.damier[colonne],0));
     	if (colonne>= TAILLE/2 && colonne<TAILLE) {
     		for(int i=0 ; i<= colonne ;i++) {
@@ -134,9 +134,9 @@ public class PlateauX implements PlateauJeu {
 
 
     public void joue(Joueur j, CoupJeu c) {
-    	int graine=c.getGraines();
-    	int colonne= c.getColonne();
-			for(int i=colonne; i < c.getGraines() ; i++) { // toutes les lignes		
+    	int graine= ((CoupX)c).getGraines();
+    	int colonne= ((CoupX)c).getColonne();
+			for(int i=colonne; i < ((CoupX)c).getGraines() ; i++) { // toutes les lignes		
 					if ( i%TAILLE != colonne)
 					damier[ i % TAILLE]++; 
 			}	
@@ -159,8 +159,5 @@ public class PlateauX implements PlateauJeu {
     public boolean coupValide(Joueur j, CoupJeu c) {
           throw new UnsupportedOperationException("Il vous faut coder cette méthode");
     }
-
-
-	
 	
 }

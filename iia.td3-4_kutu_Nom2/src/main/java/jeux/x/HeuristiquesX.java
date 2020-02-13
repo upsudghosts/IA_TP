@@ -60,7 +60,7 @@ public class HeuristiquesX {
 		ArrayList<CoupJeu> cp = p.coupsPossibles(j);
 		
 		for(int i = 0; i < cp.size(); i++) {
-			temp += cp.get(i).getScore();
+			temp += ((CoupX)cp.get(i)).getScore();
 		}
 	}
 }
