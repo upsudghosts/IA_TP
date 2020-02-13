@@ -3,6 +3,8 @@ package jeux.x;
 import iia.jeux.modele.CoupJeu;
 import iia.jeux.modele.PlateauJeu;
 import iia.jeux.modele.joueur.Joueur;
+import jeux.dominos.CoupDominos;
+
 import java.util.ArrayList;
 
 public class PlateauX implements PlateauJeu {
@@ -31,6 +33,18 @@ public class PlateauX implements PlateauJeu {
 	/** le damier */
 	private int damier[];
 
+	/** Le joueur que joue "Blanc" */
+	private static Joueur joueurBlanc;
+
+	/** Le joueur que joue "noir" */
+	private static Joueur joueurNoir;
+
+	/************* Gestion des paramètres de classe** ****************/ 
+
+	public static void setJoueurs(Joueur jb, Joueur jn) {
+		joueurBlanc = jb;
+		joueurNoir = jn;
+	}
 
 	/************* Constructeurs ****************/ 
 
@@ -41,17 +55,34 @@ public class PlateauX implements PlateauJeu {
 		}
 	}
 
-	public PlateauX(int depuis[][]){
+	public PlateauX(int depuis[]){
 		damier = new int[TAILLE];
 		for(int i=0; i < TAILLE; i++)
-				damier[i][j] = depuis[i][j];
+				damier[i] = depuis[i];
 	}
 
 
     /* A Faire */
 
     public ArrayList<CoupJeu> coupsPossibles(Joueur j) {
-        throw new UnsupportedOperationException("Il vous faut coder cette méthode");
+		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
+		if (j.equals(joueurBlanc)) {
+			for(int i=0 ; i < TAILLE ; i++) { // toutes les lignes
+				for (int j=0 ; j < TAILLE - 1 ; j++) { // regarde sur une colonne
+					if( (damier[i][j]==VIDE) && (damier[i][j+1]==VIDE) ) // on peut jouer
+						lesCoupsPossibles.add(new CoupDominos(i,j));
+				}
+			}			
+		} else { // Noir
+			for(int i=0 ; i < TAILLE-1 ; i++) { // toutes les lignes qui passent
+				for (int j=0 ; j < TAILLE ; j++) { // regarde sur toute colonne
+					if( (damier[i][j]==VIDE) && (damier[i+1][j]==VIDE) )  // on peut jouer
+						lesCoupsPossibles.add(new CoupDominos(i,j));
+				}
+			}
+		}
+		return lesCoupsPossibles;
+
     }
 
     public void joue(Joueur j, CoupJeu c) {
