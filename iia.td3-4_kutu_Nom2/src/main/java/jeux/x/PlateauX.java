@@ -137,8 +137,15 @@ public class PlateauX implements PlateauJeu {
     	int graine= ((CoupX)c).getGraines();
     	int colonne= ((CoupX)c).getColonne();
 			for(int i=colonne; i < ((CoupX)c).getGraines() ; i++) { // toutes les lignes		
-					if ( i%TAILLE != colonne)
-					damier[ i % TAILLE]++; 
+					if ( i%TAILLE != colonne) {
+						damier[ i % TAILLE]++; 
+						if(j.equals(joueurBlanc)) {
+							this.cagnotte[0] = ((CoupX)c).getScore();
+						}else {
+							this.cagnotte[1] = ((CoupX)c).getScore();
+						}
+					}
+					
 			}	
 			damier[colonne]=0;
 	
