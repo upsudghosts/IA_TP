@@ -30,16 +30,12 @@ public class HeuristiquesX {
 		}
 		
 
-	
 		public int eval(PlateauJeu p, Joueur j){
-	
 			if(j.equals(joueurBlanc)) {
 				return  p.coupsPossibles(j).size() - p.coupsPossibles(joueurNoir).size();
 			}else {
 				return p.coupsPossibles(joueurNoir).size() - p.coupsPossibles(j).size();
-			}
-			
-			
+			}	
 		}
 	};
 

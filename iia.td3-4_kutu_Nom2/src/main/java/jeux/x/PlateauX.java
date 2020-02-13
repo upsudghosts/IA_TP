@@ -3,7 +3,7 @@ package jeux.x;
 import iia.jeux.modele.CoupJeu;
 import iia.jeux.modele.PlateauJeu;
 import iia.jeux.modele.joueur.Joueur;
-import jeux.dominos.CoupDominos;
+import jeux.x.CoupX;
 
 import java.util.ArrayList;
 
@@ -19,9 +19,9 @@ public class PlateauX implements PlateauJeu {
 	
 	/* *********** constantes *********** */
 
-	/** Taille de la grille */
+	/** Taille des grilles */
 	public final static int TAILLE = 12;
-
+	public final static int TAILLE_C = 2;
 	
 	/* *********** Paramètres de classe *********** */
 
@@ -32,6 +32,9 @@ public class PlateauX implements PlateauJeu {
 
 	/** le damier */
 	private int damier[];
+	
+	/**les cagnottes */
+	private int cagnotte[];
 
 	/** Le joueur que joue "Blanc" */
 	private static Joueur joueurBlanc;
@@ -50,9 +53,15 @@ public class PlateauX implements PlateauJeu {
 
 	public PlateauX(){
 		damier = new int[TAILLE];
+		cagnotte = new int [TAILLE_C];
+		
 		for(int i=0; i < TAILLE; i++) {
-				damier[i] = VIDE;
+			damier[i] = VIDE;
 		}
+		
+		for(int i=0; i< TAILLE_C; i++) {
+			cagnotte[i]= VIDE;
+		} 
 	}
 
 	public PlateauX(int depuis[]){
@@ -64,41 +73,42 @@ public class PlateauX implements PlateauJeu {
 
     /* A Faire */
 
-    public ArrayList<CoupJeu> coupsPossibles(Joueur j) {
-		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
+    public ArrayList<CoupX> coupsPossibles(Joueur j) {
+		ArrayList<CoupX> lesCoupsPossibles = new ArrayList<CoupX>();
 		if (j.equals(joueurBlanc)) {
 			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes				
-					if( (damier[i]!=VIDE) ) // on peut jouer
-						lesCoupsPossibles.add(new CoupX(i));
-				
-			}			
-		} else { // Noir
-			for(int i=0 ; i < TAILLE/2 ; i++) { // toutes les lignes qui passent
-					if( damier[i]!=VIDE){  // on peut jouer
-						lesCoupsPossibles.add(new CoupX(i));
+					if( (damier[i]!=VIDE) ) { // on peut jouer
+						lesCoupsPossibles.add(new CoupX(i, damier[i]));
 					}
+			}	
+		}
+		
+		else{
+			for(int i=0 ; i < TAILLE-1 ; i++) { // toutes les lignes qui passent
+				if( (damier[i+1]==VIDE) && (damier[i+1]==VIDE) )  // on peut jouer
+						lesCoupsPossibles.add(new CoupX(i,damier[i]));
 			}
 		}
+			
 		return lesCoupsPossibles;
-
     }
     
+    public int CalculScore(int colonne ) {
+    	return 0; 
+    } 
 
-    public void joue(Joueur j, CoupJeu c) {
+    public void joue(Joueur j, CoupX c) {
     	int graine=c.getGraines();
-    	int colonne
-		if (j.equals(joueurBlanc)) {
-			
-			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes				
-				
-			}			
-		} else { // Noir
-			for(int i=0 ; i < TAILLE/2 ; i++) { // toutes les lignes qui passent
-					
-			}
-		}
+    	int colonne= c.getColonne();
+			for(int i=colonne; i < c.getGraines() ; i++) { // toutes les lignes		
+					if ( i%TAILLE != colonne)
+					damier[ i % TAILLE]++; 
+			}	
+			damier[colonne]=0;
 	
     }
+   
+
 
     public boolean finDePartie() {
          throw new UnsupportedOperationException("Il vous faut coder cette méthode");
