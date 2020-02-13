@@ -85,10 +85,20 @@ public class PlateauX implements PlateauJeu {
     
 
     public void joue(Joueur j, CoupJeu c) {
-        for(int i=0; i< TAILLE ; i++) {
-        	
-        }
-   }
+    	int graine=c.getGraines();
+    	int colonne
+		if (j.equals(joueurBlanc)) {
+			
+			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes				
+				
+			}			
+		} else { // Noir
+			for(int i=0 ; i < TAILLE/2 ; i++) { // toutes les lignes qui passent
+					
+			}
+		}
+	
+    }
 
     public boolean finDePartie() {
          throw new UnsupportedOperationException("Il vous faut coder cette méthode");
