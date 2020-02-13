@@ -85,7 +85,7 @@ public class PlateauX implements PlateauJeu {
 		else{
 			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes	
 				if( (damier[i]!=VIDE) ) { // on peut jouer
-					lesCoupsPossibles.add(new CoupX(i, damier[i], this.CalculScoreBlanc(i,j)));
+					lesCoupsPossibles.add(new CoupX(i, damier[i], this.CalculScoreNoir(i,j)));
 				}
 		}	
 		}
