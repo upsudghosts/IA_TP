@@ -76,24 +76,24 @@ public class PlateauX implements PlateauJeu {
     public ArrayList<CoupJeu> coupsPossibles(Joueur j) {
 		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
 		if (j.equals(joueurBlanc)) {
-			for(int i=0 ; i < TAILLE ; i++) { // toutes les lignes
-				if( (damier[i]==VIDE) && (damier[i+1]==VIDE) ) // on peut jouer
-						lesCoupsPossibles.add(new CoupDominos(i,j));
-				}
-			}			
-		} else { // Noir
+			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes				
+					if( (damier[i]!=VIDE) ) // on peut jouer
+						lesCoupsPossibles.add(new CoupX(i, damier[i]));
+			}	
+		}
+		
+		else{
 			for(int i=0 ; i < TAILLE-1 ; i++) { // toutes les lignes qui passent
 				if( (damier[i+1]==VIDE) && (damier[i+1]==VIDE) )  // on peut jouer
-						lesCoupsPossibles.add(new CoupDominos(i,j));
-				}
+						lesCoupsPossibles.add(new CoupX(i,damier[i]));
 			}
 		}
+			
 		return lesCoupsPossibles;
-
     }
+    
 
     public void joue(Joueur j, CoupJeu c) {
-         throw new UnsupportedOperationException("Il vous faut coder cette méthode");
    }
 
     public boolean finDePartie() {
