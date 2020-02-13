@@ -67,26 +67,27 @@ public class PlateauX implements PlateauJeu {
     public ArrayList<CoupJeu> coupsPossibles(Joueur j) {
 		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
 		if (j.equals(joueurBlanc)) {
-			for(int i=0 ; i < TAILLE ; i++) { // toutes les lignes
-				for (int j=0 ; j < TAILLE - 1 ; j++) { // regarde sur une colonne
-					if( (damier[i][j]==VIDE) && (damier[i][j+1]==VIDE) ) // on peut jouer
-						lesCoupsPossibles.add(new CoupDominos(i,j));
-				}
+			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes				
+					if( (damier[i]!=VIDE) ) // on peut jouer
+						lesCoupsPossibles.add(new CoupX(i));
+				
 			}			
 		} else { // Noir
-			for(int i=0 ; i < TAILLE-1 ; i++) { // toutes les lignes qui passent
-				for (int j=0 ; j < TAILLE ; j++) { // regarde sur toute colonne
-					if( (damier[i][j]==VIDE) && (damier[i+1][j]==VIDE) )  // on peut jouer
-						lesCoupsPossibles.add(new CoupDominos(i,j));
-				}
+			for(int i=0 ; i < TAILLE/2 ; i++) { // toutes les lignes qui passent
+					if( damier[i]!=VIDE){  // on peut jouer
+						lesCoupsPossibles.add(new CoupX(i));
+					}
 			}
 		}
 		return lesCoupsPossibles;
 
     }
+    
 
     public void joue(Joueur j, CoupJeu c) {
-         throw new UnsupportedOperationException("Il vous faut coder cette méthode");
+        for(int i=0; i< TAILLE ; i++) {
+        	
+        }
    }
 
     public boolean finDePartie() {
