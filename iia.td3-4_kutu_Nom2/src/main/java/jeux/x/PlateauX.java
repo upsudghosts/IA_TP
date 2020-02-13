@@ -94,7 +94,7 @@ public class PlateauX implements PlateauJeu {
     
     public int CalculScoreBlanc(int colonne , Joueur jj) {
     	int score=0; 
-    	PlateauX temp=this.copy(); 
+    	PlateauX temp=copy(); 
     	temp.joue(jj, new CoupX(colonne, temp.damier[colonne],0));
     	if (colonne>= 0 && colonne<TAILLE/2) {
     		for(int i=0 ; i<= colonne ;i++) {
