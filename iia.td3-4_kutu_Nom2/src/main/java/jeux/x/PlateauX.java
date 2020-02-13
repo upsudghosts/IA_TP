@@ -73,12 +73,13 @@ public class PlateauX implements PlateauJeu {
 
     /* A Faire */
 
-    public ArrayList<CoupX> coupsPossibles(Joueur j) {
-		ArrayList<CoupX> lesCoupsPossibles = new ArrayList<CoupX>();
+    public ArrayList<CoupJeu> coupsPossibles(Joueur j) {
+		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
 		if (j.equals(joueurBlanc)) {
-			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes				
+			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes	
+				int caseVide
 					if( (damier[i]!=VIDE) ) { // on peut jouer
-						lesCoupsPossibles.add(new CoupX(i, damier[i]));
+						lesCoupsPossibles.add(new CoupX(i, damier[i], this.CalculScoreBlanc(i)));
 					}
 			}	
 		}
@@ -93,9 +94,42 @@ public class PlateauX implements PlateauJeu {
 		return lesCoupsPossibles;
     }
     
-    public int CalculScore(int colonne ) {
+    public int CalculScoreBlanc(int colonne ) {
+    	int score=0; 
+    	if (colonne>= 0 && colonne<TAILLE/2) {
+    		for(int i=0 ; i<= colonne ;i++) {
+    			if(this.damier[i] != VIDE) {
+    				for(int j= colonne ; i<TAILLE/2 ; i++) {
+    					if(damier[j]==2 || damier[j]==3) {
+    						score+= damier[j];
+    					}
+    				}
+    				return score; 
+    			}
+    		}
+    		return 0; 
+    	}
     	return 0; 
     } 
+
+    public int CalculScoreNoir(int colonne ) {
+    	int score=0; 
+    	if (colonne>= 0 && colonne<TAILLE/2) {
+    		for(int i=0 ; i<= colonne ;i++) {
+    			if(this.damier[i] != VIDE) {
+    				for(int j= colonne ; i<TAILLE/2 ; i++) {
+    					if(damier[j]==2 || damier[j]==3) {
+    						score+= damier[j];
+    					}
+    				}
+    				return score; 
+    			}
+    		}
+    		return 0; 
+    	}
+    	return 0; 
+    } 
+
 
     public void joue(Joueur j, CoupX c) {
     	int graine=c.getGraines();
