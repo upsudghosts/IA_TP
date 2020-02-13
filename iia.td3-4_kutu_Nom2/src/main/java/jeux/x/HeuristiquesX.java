@@ -62,5 +62,7 @@ public class HeuristiquesX {
 		for(int i = 0; i < cp.size(); i++) {
 			temp += ((CoupX)cp.get(i)).getScore();
 		}
+		
+		return temp;
 	}
 }
