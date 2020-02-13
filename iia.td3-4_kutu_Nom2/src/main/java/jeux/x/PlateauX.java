@@ -76,9 +76,8 @@ public class PlateauX implements PlateauJeu {
 		ArrayList<CoupJeu> lesCoupsPossibles = new ArrayList<CoupJeu>();
 		if (j.equals(joueurBlanc)) {
 			for(int i=TAILLE/2 ; i < TAILLE ; i++) { // toutes les lignes	
-				int caseVide
 					if( (damier[i]!=VIDE) ) { // on peut jouer
-						lesCoupsPossibles.add(new CoupX(i, damier[i], this.CalculScoreBlanc(i)));
+						lesCoupsPossibles.add(new CoupX(i, damier[i], this.CalculScoreBlanc(i,j)));
 					}
 			}	
 		}
@@ -86,15 +85,17 @@ public class PlateauX implements PlateauJeu {
 		else{
 			for(int i=0 ; i < TAILLE-1 ; i++) { // toutes les lignes qui passent
 				if( (damier[i+1]==VIDE) && (damier[i+1]==VIDE) )  // on peut jouer
-						lesCoupsPossibles.add(new CoupX(i,damier[i]));
+						lesCoupsPossibles.add(new CoupX(i,damier[i],CalculScoreBlanc(i,j)));
 			}
 		}
 			
 		return lesCoupsPossibles;
     }
     
-    public int CalculScoreBlanc(int colonne ) {
+    public int CalculScoreBlanc(int colonne , Joueur jj) {
     	int score=0; 
+    	PlateauX temp=this.copy(); 
+    	temp.joue(jj, new CoupX(colonne, temp.damier[colonne],0));
     	if (colonne>= 0 && colonne<TAILLE/2) {
     		for(int i=0 ; i<= colonne ;i++) {
     			if(this.damier[i] != VIDE) {
@@ -111,14 +112,16 @@ public class PlateauX implements PlateauJeu {
     	return 0; 
     } 
 
-    public int CalculScoreNoir(int colonne ) {
+    public int CalculScoreNoir(int colonne , Joueur jj) {
     	int score=0; 
-    	if (colonne>= 0 && colonne<TAILLE/2) {
+    	PlateauX temp=this.copy(); 
+    	temp.joue(jj, new CoupX(colonne, temp.damier[colonne],0));
+    	if (colonne>= TAILLE/2 && colonne<TAILLE) {
     		for(int i=0 ; i<= colonne ;i++) {
-    			if(this.damier[i] != VIDE) {
-    				for(int j= colonne ; i<TAILLE/2 ; i++) {
-    					if(damier[j]==2 || damier[j]==3) {
-    						score+= damier[j];
+    			if(temp.damier[i] != VIDE) {
+    				for(int j= colonne ; i<TAILLE ; i++) {
+    					if(temp.damier[j]==2 || temp.damier[j]==3) {
+    						score+= temp.damier[j];
     					}
     				}
     				return score; 
@@ -130,7 +133,7 @@ public class PlateauX implements PlateauJeu {
     } 
 
 
-    public void joue(Joueur j, CoupX c) {
+    public void joue(Joueur j, CoupJeu c) {
     	int graine=c.getGraines();
     	int colonne= c.getColonne();
 			for(int i=colonne; i < c.getGraines() ; i++) { // toutes les lignes		
@@ -157,7 +160,7 @@ public class PlateauX implements PlateauJeu {
           throw new UnsupportedOperationException("Il vous faut coder cette méthode");
     }
 
-    
+
 	
 	
 }
