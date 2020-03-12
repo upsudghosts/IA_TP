@@ -5,11 +5,11 @@ import iia.espacesEtats.modeles.Solution;
 
 /**
  * RechercheEnProfondeurSimple
- * une implŽmentation simple de l'algorithme de recherche
- * en profondeur d'abord, sans dŽtection de cycles, donc uniquement adaptŽe
- * aux espaces d'Žtats sans cycles ni branches infinies.
+ * une implï¿½mentation simple de l'algorithme de recherche
+ * en profondeur d'abord, sans dï¿½tection de cycles, donc uniquement adaptï¿½e
+ * aux espaces d'ï¿½tats sans cycles ni branches infinies.
  * 
- * @author <Vous mme>
+ * @author <Vous mï¿½me>
  */
 public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
 
@@ -27,7 +27,7 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
 
     @Override
     public Solution chercheSolution(Probleme p) {
-        // <A vous de complŽter >
+        //A FAIRE
         return null;
     }
     

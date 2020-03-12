@@ -6,7 +6,7 @@ import iia.espacesEtats.modeles.Solution;
 /**
  * RechercheEnLargeur codage de l'algorithme de recherche en largeur d'abord
  * 
- * @author <Vous mme>
+ * @author <Vous mï¿½me>
  */
 public class RechercheEnLargeur extends AlgorithmeRechercheEE {
 
@@ -22,7 +22,8 @@ public class RechercheEnLargeur extends AlgorithmeRechercheEE {
     //----------------------------------------------------
     @Override
     public Solution chercheSolution(Probleme p) {
-        // <A vous de complŽter >
+        // A FAIRE 
+    	
         return null;
     }
    
