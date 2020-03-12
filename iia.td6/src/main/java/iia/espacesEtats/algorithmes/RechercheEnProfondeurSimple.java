@@ -27,7 +27,9 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
 
     @Override
     public Solution chercheSolution(Probleme p) {
-        //A FAIRE
+        //pouette
+    	
+    	
         return null;
     }
     
