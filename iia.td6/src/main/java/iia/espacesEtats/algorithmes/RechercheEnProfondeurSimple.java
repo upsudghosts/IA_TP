@@ -64,13 +64,7 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
         		} else {
         			Etat[] succ = currE.successeurs().toArray(new Etat[currE.successeurs().size()]);
         			front.remove(currE);
-          			
-        			for(Noeud n : graphe) {
-        					if(n.memeEtat(currE)) {
-        						currN.setPere(n);
-        					}
-        				}
-          		
+        			currN.setPere(currN);
         			
         			for(int i = 0; i < succ.length; i++) {
         				front.add(i,succ[i]);
