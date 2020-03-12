@@ -34,47 +34,41 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
     	ArrayList<Noeud> graphe = new ArrayList<Noeud>();
     	ArrayList<Etat> front = new ArrayList<Etat>();
     	Solution sol = new Solution();
-    	
-    	Etat initE = p.getEtatInitial();
     	Noeud currN = new Noeud();
     	
-    	currN.setEtat(initE);
+    	Etat currE;
+    
+    	currE = p.getEtatInitial();
+    	currN.setEtat(currE);
     	currN.setPere(currN);
     	
     	graphe.add(currN);
-    	
-    	if(p.isTerminal(initE)) {
-    		return new Solution(initE);
-    	} else {
-    		Etat currE;
-    		front.add(initE);
+   		front.add(currE);
       
-        	do { 		
-        		currE = front.get(0);
-        		
-        		currN.setEtat(currE);
-        		
-        		if(p.isTerminal(currE)) {
-        			while(!currN.memeEtat(initE)) {
-        				sol.add(currN.getEtat());
-        				currN = currN.getPere();
-        			}
-        			return sol;
+       	do { 		
+       		currE = front.get(0);
+       		currN.setEtat(currE);
+        	
+        	if(p.isTerminal(currE)) {
+       			do{
+       				sol.add(currN.getEtat());
+       				currN = currN.getPere();
+       			}while(!currN.memeEtat(p.getEtatInitial())) ;
+       			return sol;
+       			
+       		} else {
+       			Etat[] succ = currE.successeurs().toArray(new Etat[currE.successeurs().size()]);
+        		front.remove(currE);
+        		currN.setPere(currN);
         			
-        		} else {
-        			Etat[] succ = currE.successeurs().toArray(new Etat[currE.successeurs().size()]);
-        			front.remove(currE);
-        			currN.setPere(currN);
-        			
-        			for(int i = 0; i < succ.length; i++) {
-        				front.add(i,succ[i]);
-        				currN.setEtat(succ[i]);
-        				graphe.add(currN);
-        			}
-        		}
+        		for(int i = 0; i < succ.length; i++) {
+        			front.add(i,succ[i]);
+        			currN.setEtat(succ[i]);
+       				graphe.add(currN);
+       			}
+       		}
         		
-        	}while(!front.isEmpty());
-    	}
+       	}while(!front.isEmpty());
 
         return sol;
     }
