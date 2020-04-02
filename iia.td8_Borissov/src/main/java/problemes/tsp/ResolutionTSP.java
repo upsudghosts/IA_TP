@@ -32,7 +32,7 @@ public class ResolutionTSP {
 
         final float minDistance = EtatTSP.CARTE.distanceMinimum();
 
-        Heuristique h1 = new Heuristique() {
+        Heuristique h1 = new HeuristiqueTSP() {
 
             @Override
             public float eval(Etat e) {
