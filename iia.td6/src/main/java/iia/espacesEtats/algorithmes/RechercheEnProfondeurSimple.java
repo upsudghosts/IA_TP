@@ -44,33 +44,33 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
     	
     	graphe.add(currN);
    		front.add(currE);
-      
-       	do { 		
+   		
+       	do{ 		
        		currE = front.get(0);
        		currN.setEtat(currE);
-        	
+       		
         	if(p.isTerminal(currE)) {
        			do{
        				sol.add(currN.getEtat());
+       				System.out.println("F.add etat");
        				currN = currN.getPere();
        			}while(!currN.memeEtat(p.getEtatInitial())) ;
        			return sol;
        			
        		} else {
        			Etat[] succ = currE.successeurs().toArray(new Etat[currE.successeurs().size()]);
-        		front.remove(currE);
+        		front.remove(0);
         		currN.setPere(currN);
-        			
+        		System.out.println(succ.length);
         		for(int i = 0; i < succ.length; i++) {
         			front.add(i,succ[i]);
         			currN.setEtat(succ[i]);
        				graphe.add(currN);
        			}
-       		}
-        		
+       		}		
        	}while(!front.isEmpty());
 
-        return sol;
+        return null;
     }
         
 }

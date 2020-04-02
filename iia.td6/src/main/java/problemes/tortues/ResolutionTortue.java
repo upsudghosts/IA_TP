@@ -4,7 +4,7 @@ import iia.espacesEtats.algorithmes.*;
 import iia.espacesEtats.modeles.*;
 
 /**
- * Exemple de résolution de problème
+ * Exemple de rÔøΩsolution de problÔøΩme
  *
  * @author Philippe Chatalic
  * @author Alexandre Allauzen
@@ -12,20 +12,20 @@ import iia.espacesEtats.modeles.*;
 public class ResolutionTortue {
 
     public static void main(String[] args) {
-        /* Définition d'un problème à partir d'un état initial */
+        /* DÔøΩfinition d'un problÔøΩme ÔøΩ partir d'un ÔøΩtat initial */
         Probleme pb = new ProblemeTortue(new EtatTortue());
         
-        /* Choix de l'algorithme de résolution*/     
-        AlgorithmeRechercheEE algo = null;      // Mettre le bon algorithme ici 
+        /* Choix de l'algorithme de rÔøΩsolution*/     
+        AlgorithmeRechercheEE algo = new RechercheEnProfondeurSimple();      // Mettre le bon algorithme ici 
         
-        /* La solution, si elle est trouvé est retournée sous forme d'une
-         * liste de noeuds allant de l'état initial à l'état final
+        /* La solution, si elle est trouvÔøΩ est retournÔøΩe sous forme d'une
+         * liste de noeuds allant de l'ÔøΩtat initial ÔøΩ l'ÔøΩtat final
          */
         Solution sol = algo.chercheSolution(pb);
         if (sol != null) {
-            System.out.println("Solution trouvée : ");
+            System.out.println("Solution trouvÔøΩe : ");
             sol.affiche();
-            System.out.println("Nombre total de noeuds développés : " + algo.getNbNoeudsDeveloppes());
+            System.out.println("Nombre total de noeuds dÔøΩveloppÔøΩs : " + algo.getNbNoeudsDeveloppes());
        } else {
             System.out.println("Echec !");
         }
