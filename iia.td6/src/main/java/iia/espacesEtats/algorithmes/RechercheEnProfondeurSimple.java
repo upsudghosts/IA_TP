@@ -33,14 +33,14 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
     public Solution chercheSolution(Probleme p) {  	
     	ArrayList<Noeud> graphe = new ArrayList<Noeud>();
     	ArrayList<Etat> front = new ArrayList<Etat>();
-    	Solution sol = new Solution();
+    	Solution sol = null;
     	Noeud currN = new Noeud();
     	
     	Etat currE;
     
     	currE = p.getEtatInitial();
     	currN.setEtat(currE);
-    	currN.setPere(currN);
+    	currN.setPere(null);
     	
     	graphe.add(currN);
    		front.add(currE);
@@ -50,11 +50,12 @@ public class RechercheEnProfondeurSimple extends AlgorithmeRechercheEE {
        		currN.setEtat(currE);
        		
         	if(p.isTerminal(currE)) {
+        		sol = new Solution();
        			do{
        				sol.add(currN.getEtat());
        				System.out.println("F.add etat");
        				currN = currN.getPere();
-       			}while(!currN.memeEtat(p.getEtatInitial())) ;
+       			}while(currN.getPere() != null) ;
        			return sol;
        			
        		} else {
