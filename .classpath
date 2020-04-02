@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="iia.td3-4_kutu_Nom2/src/main/java"/>
+	<classpathentry kind="src" path="iia.td3-4_kutu_Nom2/src/test/java"/>
+	<classpathentry kind="src" path="iia.td6/src/main/java"/>
+	<classpathentry kind="src" path="iia.td6/src/test/java"/>
+	<classpathentry kind="src" path="iia.td8_Borissov/src/main/java"/>
+	<classpathentry kind="src" path="iia.td8_Borissov/src/test/java"/>
+	<classpathentry kind="output" path="iia.td3-4_kutu_Nom2/target/classes"/>
+</classpath>
