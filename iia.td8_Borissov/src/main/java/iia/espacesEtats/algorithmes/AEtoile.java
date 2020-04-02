@@ -30,7 +30,7 @@ public class AEtoile implements AlgorithmeHeuristiqueRechercheEE {
 
     /* Lance l'exploration sur un problème */
     public Solution chercheSolution(Probleme p) {
-    	
+    
     	ProblemeACout pc = new ProblemeACout(p.getEtatInitial(), p.getNom());
     	
         Solution sol = null;
